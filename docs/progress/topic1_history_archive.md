@@ -1,0 +1,8 @@
+# Topic 1 Historical Notes Archive
+
+Historical milestone documents retained for traceability:
+- `topic1_pr1_delta.md`
+- `topic1_phase1_corrective_update.md`
+- `topic1_phase2_research_baseline_update.md`
+- `topic1_phase3_torch_push_update.md`
+- `topic1_backend_compare_attempt.md`

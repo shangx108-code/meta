@@ -1,5 +1,5 @@
 comparison,setting_a,setting_b,mean_acc_a,mean_acc_b,delta_a_minus_b
-ideal_vs_robust,robust,ideal,0.286459,0.200521,0.085938
-aligned_vs_misaligned,shift=0.0,shift=1.0,0.348958,0.138021,0.210937
-single_vs_multi_wavelength,num_wavelengths=1,num_wavelengths=3,0.25651,0.230469,0.026041
-high_vs_reduced_coherence,coherence=1.0,coherence=0.6,0.25,0.236979,0.013021
+ideal_vs_robust,robust,ideal,0.257812,0.205078,0.052734
+aligned_vs_misaligned,shift=0.0,shift=1.0,0.332031,0.130859,0.201172
+single_vs_multi_wavelength,num_wavelengths=1,num_wavelengths=3,0.244141,0.21875,0.025391
+high_vs_reduced_coherence,coherence=1.0,coherence=0.6,0.238281,0.224609,0.013672

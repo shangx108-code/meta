@@ -1,17 +1,17 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="900" height="260">
 <rect width="100%" height="100%" fill="white"/>
 <text x="20" y="25" font-size="16" font-family="Arial">Topic1 Ablation Pairwise Comparison</text>
-<rect x="80" y="169.89580999999998" width="60" height="40.10419" fill="#4e79a7"/>
-<rect x="148" y="181.92706" width="60" height="28.07294" fill="#f28e2b"/>
+<rect x="80" y="173.90632" width="60" height="36.09368" fill="#4e79a7"/>
+<rect x="148" y="181.28908" width="60" height="28.71092" fill="#f28e2b"/>
 <text x="80" y="230" font-size="10" font-family="Arial">ideal_vs_robust</text>
-<rect x="280" y="161.14581" width="60" height="48.854189999999996" fill="#4e79a7"/>
-<rect x="348" y="190.67706" width="60" height="19.32294" fill="#f28e2b"/>
+<rect x="280" y="163.51566" width="60" height="46.48434" fill="#4e79a7"/>
+<rect x="348" y="191.67974" width="60" height="18.32026" fill="#f28e2b"/>
 <text x="280" y="230" font-size="10" font-family="Arial">aligned_vs_misaligned</text>
-<rect x="480" y="174.08853" width="60" height="35.911469999999994" fill="#4e79a7"/>
-<rect x="548" y="177.73434" width="60" height="32.26566" fill="#f28e2b"/>
+<rect x="480" y="175.82026" width="60" height="34.17974" fill="#4e79a7"/>
+<rect x="548" y="179.375" width="60" height="30.625" fill="#f28e2b"/>
 <text x="480" y="230" font-size="10" font-family="Arial">single_vs_multi_wavelength</text>
-<rect x="680" y="174.999965" width="60" height="35.000035" fill="#4e79a7"/>
-<rect x="748" y="176.822905" width="60" height="33.177094999999994" fill="#f28e2b"/>
+<rect x="680" y="176.64066" width="60" height="33.359339999999996" fill="#4e79a7"/>
+<rect x="748" y="178.55474" width="60" height="31.44526" fill="#f28e2b"/>
 <text x="680" y="230" font-size="10" font-family="Arial">high_vs_reduced_coherence</text>
 <text x="760" y="40" font-size="11" font-family="Arial" fill="#4e79a7">A</text>
 <text x="760" y="55" font-size="11" font-family="Arial" fill="#f28e2b">B</text>

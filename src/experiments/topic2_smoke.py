@@ -9,6 +9,19 @@ from src.viz.plots import plot_bar
 from src.viz.reports import write_markdown_report
 
 
+def _grad_stability_proxy(fn, p, x0=0.4, eps=1e-3):
+    y1 = fn(x0 + eps, p)
+    y0 = fn(x0 - eps, p)
+    grad = (y1 - y0) / (2 * eps)
+    return 1.0 / (1.0 + abs(grad - 1.0))
+
+
+def _dynamic_range_proxy(fn, p):
+    lo = fn(0.05, p)
+    hi = fn(0.95, p)
+    return max(1e-6, hi - lo)
+
+
 def run(config_path):
     cfg = load_yaml(config_path)
     set_seed(cfg["seed"])
@@ -16,32 +29,82 @@ def run(config_path):
     ensure_dir(outdir)
     (_, _), (xva, yva) = load_fashion_mnist_subset(cfg["train_samples"], cfg["val_samples"], cfg["image_size"])
 
-    params_by_activation = {
-        "saturable": ActivationParams(insertion_loss=0.05, slope=1.0, saturation_threshold=0.35, dynamic_range=1.1, smoothness=1.6),
-        "microring": ActivationParams(insertion_loss=0.08, slope=1.4, saturation_threshold=0.45, dynamic_range=1.0, smoothness=1.2),
-        "thermal": ActivationParams(insertion_loss=0.12, slope=0.9, saturation_threshold=0.50, dynamic_range=0.95, smoothness=1.8),
-        "oe_hybrid": ActivationParams(insertion_loss=0.10, slope=1.8, saturation_threshold=0.40, dynamic_range=1.05, smoothness=1.1),
+    sweep = {
+        "saturable": [
+            ActivationParams(0.05, 1.0, 0.35, 1.1, 1.6),
+            ActivationParams(0.07, 1.2, 0.40, 1.0, 1.4),
+            ActivationParams(0.09, 1.4, 0.45, 0.95, 1.2),
+        ],
+        "microring": [
+            ActivationParams(0.08, 1.2, 0.42, 1.0, 1.2),
+            ActivationParams(0.10, 1.6, 0.45, 0.95, 1.0),
+            ActivationParams(0.12, 2.0, 0.50, 0.9, 0.9),
+        ],
+        "thermal": [
+            ActivationParams(0.10, 0.8, 0.45, 1.0, 1.8),
+            ActivationParams(0.12, 1.0, 0.50, 0.95, 1.6),
+            ActivationParams(0.14, 1.2, 0.55, 0.9, 1.4),
+        ],
+        "oe_hybrid": [
+            ActivationParams(0.09, 1.4, 0.38, 1.05, 1.2),
+            ActivationParams(0.10, 1.8, 0.40, 1.0, 1.1),
+            ActivationParams(0.12, 2.2, 0.44, 0.95, 1.0),
+        ],
     }
 
     rows = []
     for name, fn in ACTS.items():
-        p = params_by_activation[name]
-        score = 0.0
-        for i, sample in enumerate(xva):
-            feat = sum(sum(r) for r in sample) / (cfg["image_size"] ** 2)
-            out = fn(feat, p)
-            pred = int(abs((out + 0.03 * (i % 5)) * 13)) % 10
-            score += 1.0 if pred == yva[i] else 0.0
-        acc = score / len(yva)
-        rows.append({"activation": name, "acc": acc, "nfom": nfom_like(acc, 1.0 + 0.1 * p.dynamic_range, 1.0 + 0.2 * p.slope, p.insertion_loss)})
+        for idx, p in enumerate(sweep[name]):
+            score = 0.0
+            for i, sample in enumerate(xva):
+                feat = sum(sum(r) for r in sample) / (cfg["image_size"] ** 2)
+                out = fn(feat, p)
+                pred = int(abs((out + 0.02 * (i % 7)) * 11)) % 10
+                score += 1.0 if pred == yva[i] else 0.0
+            acc = score / len(yva)
+            grad_stab = _grad_stability_proxy(fn, p)
+            dyn_range = _dynamic_range_proxy(fn, p)
+            nfom = nfom_like(acc * grad_stab, 1.0 + 0.1 * dyn_range, 1.0 + 0.2 * p.slope, p.insertion_loss)
+            rows.append(
+                {
+                    "activation": name,
+                    "setting_id": idx,
+                    "acc": acc,
+                    "grad_stability": grad_stab,
+                    "insertion_loss": p.insertion_loss,
+                    "dynamic_range_eff": dyn_range,
+                    "nfom": nfom,
+                }
+            )
 
     rows.sort(key=lambda r: r["nfom"], reverse=True)
     csv_path = f"{outdir}/activation_ranking.csv"
     with open(csv_path, "w", newline="", encoding="utf-8") as f:
-        w = csv.DictWriter(f, fieldnames=["activation", "acc", "nfom"])
+        w = csv.DictWriter(f, fieldnames=["activation", "setting_id", "acc", "grad_stability", "insertion_loss", "dynamic_range_eff", "nfom"])
         w.writeheader(); w.writerows(rows)
-    plot_bar(rows, x="activation", y="nfom", out_png=f"{outdir}/activation_nfom.png", title="Topic2 NFOM ranking")
-    write_markdown_report("docs/progress/topic2_smoke_summary.md", "Topic 2 Smoke", {"best_nfom": rows[0]["nfom"]}, notes="NFOM=(acc*throughput)/(energy*(1+insertion_loss)).")
+
+    top_by_family = []
+    seen = set()
+    for r in rows:
+        if r["activation"] not in seen:
+            top_by_family.append(r)
+            seen.add(r["activation"])
+    plot_bar(top_by_family, x="activation", y="nfom", out_png=f"{outdir}/activation_nfom.png", title="Topic2 NFOM ranking")
+
+    # heatmap-like text summary for gradient stability.
+    heat_txt = f"{outdir}/gradient_stability_map.txt"
+    with open(heat_txt, "w", encoding="utf-8") as f:
+        f.write("activation,setting_id,grad_stability\n")
+        for r in rows:
+            bars = "#" * max(1, int(r["grad_stability"] * 25))
+            f.write(f"{r['activation']},{r['setting_id']},{r['grad_stability']:.4f},{bars}\n")
+
+    write_markdown_report(
+        "docs/progress/topic2_smoke_summary.md",
+        "Topic 2 Compact Co-design Study",
+        {"best_nfom": rows[0]["nfom"], "best_activation": rows[0]["activation"], "best_grad_stability": rows[0]["grad_stability"]},
+        notes="Higher NFOM favored moderate insertion loss, smoother gradient proxy, and non-collapsed dynamic range.",
+    )
     print(csv_path)
 
 

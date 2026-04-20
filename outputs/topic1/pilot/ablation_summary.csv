@@ -1,9 +1,9 @@
 axis,setting,mean_val_acc
-train_mode,ideal,0.200521
-train_mode,robust,0.286459
-alignment,0.0,0.348958
-alignment,1.0,0.138021
-wavelength_count,1,0.25651
-wavelength_count,3,0.230469
-coherence,0.6,0.236979
-coherence,1.0,0.25
+train_mode,ideal,0.205078
+train_mode,robust,0.257812
+alignment,0.0,0.332031
+alignment,1.0,0.130859
+wavelength_count,1,0.244141
+wavelength_count,3,0.21875
+coherence,0.6,0.224609
+coherence,1.0,0.238281
