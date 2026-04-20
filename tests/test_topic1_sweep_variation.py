@@ -40,6 +40,7 @@ class TestTopic1SweepVariation(unittest.TestCase):
             rows = list(csv.DictReader(f))
         vals = {float(r["val_acc"]) for r in rows}
         self.assertGreater(len(vals), 1, "pilot sweep should show differentiated accuracy")
+        self.assertGreater(max(vals) - min(vals), 0.02, "pilot sweep spread should be non-trivial")
 
 
 if __name__ == "__main__":

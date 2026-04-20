@@ -1,4 +1,5 @@
 Fallback plot for val_acc
 
 epoch,train_loss,val_loss,val_acc
-0,2.222009,0.65625,0.34375
+0,2.280554,0.78125,0.21875
+1,2.168698,0.78125,0.21875

@@ -1,0 +1,9 @@
+Topic1 aggregated comparison (text-plot fallback)
+train_mode=ideal: 0.2109 ########
+train_mode=robust: 0.2676 ##########
+coherence=0.6: 0.2324 #########
+coherence=1.0: 0.2461 #########
+num_wavelengths=1: 0.2520 ##########
+num_wavelengths=3: 0.2266 #########
+lateral_shift_px=0.0: 0.2676 ##########
+lateral_shift_px=1.0: 0.2109 ########
