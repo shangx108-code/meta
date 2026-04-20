@@ -134,20 +134,28 @@ def _run_topic1_torch(cfg):
     xva = torch.tensor(xva, dtype=torch.float32)
     yva = torch.tensor(yva, dtype=torch.long)
 
+    torch.manual_seed(int(cfg.get("seed", 1)))
     feature = torch.nn.Sequential(
-        torch.nn.Conv2d(1, 12, kernel_size=3, padding=1),
-        torch.nn.ReLU(),
-        torch.nn.Conv2d(12, 12, kernel_size=3, padding=1),
-        torch.nn.ReLU(),
+        torch.nn.Conv2d(1, 16, kernel_size=3, padding=1),
+        torch.nn.BatchNorm2d(16),
+        torch.nn.GELU(),
+        torch.nn.Conv2d(16, 16, kernel_size=3, padding=1),
+        torch.nn.GELU(),
         torch.nn.AvgPool2d(2),
-        torch.nn.Conv2d(12, 16, kernel_size=3, padding=1),
-        torch.nn.ReLU(),
+        torch.nn.Conv2d(16, 24, kernel_size=3, padding=1),
+        torch.nn.BatchNorm2d(24),
+        torch.nn.GELU(),
         torch.nn.AdaptiveAvgPool2d((4, 4)),
         torch.nn.Flatten(),
     )
-    head = torch.nn.Linear(16 * 4 * 4, 10)
-    opt = torch.optim.Adam(list(feature.parameters()) + list(head.parameters()), lr=cfg.get("lr", 0.01))
-    loss_fn = torch.nn.CrossEntropyLoss()
+    head = torch.nn.Sequential(
+        torch.nn.Linear(24 * 4 * 4, 64),
+        torch.nn.GELU(),
+        torch.nn.Dropout(0.1),
+        torch.nn.Linear(64, 10),
+    )
+    opt = torch.optim.AdamW(list(feature.parameters()) + list(head.parameters()), lr=cfg.get("lr", 0.0015), weight_decay=1e-4)
+    loss_fn = torch.nn.CrossEntropyLoss(label_smoothing=0.02)
 
     def apply_setting_perturb(x, robust_comp=False):
         coh = float(cfg.get("coherence_mix", 1.0))
@@ -175,12 +183,15 @@ def _run_topic1_torch(cfg):
             xb = xtr_e[i : i + bs].unsqueeze(1)
             yb = ytr_e[i : i + bs]
             xb = apply_setting_perturb(xb)
-            logits = head(feature(xb))
+            feat = feature(xb)
+            logits = head(feat)
             loss = loss_fn(logits, yb)
             if cfg.get("robust_training", False):
                 xb_aug = apply_setting_perturb(torch.roll(xb, shifts=(1, -1), dims=(-2, -1)), robust_comp=True)
-                logits_aug = head(feature(xb_aug))
-                loss = loss + float(cfg.get("robust_weight", 0.1)) * loss_fn(logits_aug, yb)
+                feat_aug = feature(xb_aug)
+                logits_aug = head(feat_aug)
+                consistency = torch.mean((torch.softmax(logits, dim=1) - torch.softmax(logits_aug, dim=1)) ** 2)
+                loss = loss + float(cfg.get("robust_weight", 0.1)) * (loss_fn(logits_aug, yb) + 0.5 * consistency)
             opt.zero_grad(); loss.backward(); opt.step()
             total_loss += float(loss.item())
 

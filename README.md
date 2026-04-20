@@ -34,3 +34,10 @@ Shell wrappers remain available under `scripts/` for CI/sandbox use.
 - `tests/`: smoke and reproducibility tests.
 - `outputs/`: checkpoints, CSV logs, plots.
 - `docs/progress/`: markdown summaries of experiment progress.
+
+## Topic 1 follow-up (torch-focused)
+
+- Torch pilot config: `configs/topic1/pilot_torch.yaml`
+- Torch pilot runner: `bash scripts/run_topic1_torch_pilot.sh`
+- Backend comparison runner: `bash scripts/run_topic1_backend_compare.sh`
+- Progress index: `docs/progress/topic1_progress_index.md`

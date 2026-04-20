@@ -1,0 +1,10 @@
+Topic1 robustness trend summary
+mode,coherence,num_wavelengths,lateral_shift,mean_acc
+ideal,1.0,1,0.0,0.250000
+ideal,1.0,1,1.0,0.125000
+ideal,1.0,3,0.0,0.250000
+ideal,1.0,3,1.0,0.125000
+robust,1.0,1,0.0,0.250000
+robust,1.0,1,1.0,0.000000
+robust,1.0,3,0.0,0.250000
+robust,1.0,3,1.0,0.000000

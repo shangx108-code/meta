@@ -1,0 +1,5 @@
+comparison,surrogate_delta,torch_delta,torch_minus_surrogate,status
+ideal_vs_robust,-0.0625,,,torch_unavailable
+aligned_vs_misaligned,0.1875,,,torch_unavailable
+single_vs_multi_wavelength,0.0,,,torch_unavailable
+high_vs_reduced_coherence,0.15625,,,torch_unavailable
