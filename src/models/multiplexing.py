@@ -5,10 +5,17 @@ class MultiplexedMultiTaskModel:
         self.wavelengths = wavelengths
 
     def forward(self, sample):
-        m = sum(sum(r) for r in sample) / max(1, len(sample) * len(sample[0]))
-        cls = [m * (i + 1) for i in range(self.num_classes)]
-        anom = [1 - m, m]
-        feat = [m, m * 0.5, m * 1.5, m * 0.8]
+        h = len(sample)
+        w = len(sample[0])
+        m = sum(sum(r) for r in sample) / max(1, h * w)
+        top = sum(sum(r) for r in sample[: h // 2]) / max(1, (h // 2) * w)
+        bot = sum(sum(r) for r in sample[h // 2 :]) / max(1, (h - h // 2) * w)
+        contrast = top - bot
+        cls = [m * (i + 1) + 0.1 * contrast * (i % 2 * 2 - 1) for i in range(self.num_classes)]
+        raw = 1.2 * abs(contrast) - 0.15 + 0.1 * m
+        anom_score = min(1.0, max(0.0, raw))
+        anom = [1 - anom_score, anom_score]
+        feat = [m, top, bot, contrast]
         return {"cls": cls, "anom": anom, "feat": feat}
 
     @staticmethod

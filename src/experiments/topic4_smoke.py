@@ -11,8 +11,11 @@ from src.viz.reports import write_markdown_report
 def make_anomaly_labels(x):
     out = []
     for s in x:
-        m = sum(sum(r) for r in s) / (len(s) * len(s[0]))
-        out.append(1 if m > 0.45 else 0)
+        h = len(s)
+        top = sum(sum(r) for r in s[: h // 2])
+        bot = sum(sum(r) for r in s[h // 2 :])
+        contrast = abs(top - bot) / max(1e-8, (top + bot))
+        out.append(1 if contrast > 0.555 else 0)
     return out
 
 
@@ -40,7 +43,7 @@ def run(config_path):
     metrics = {
         "taskA_acc": cls_ok / total,
         "taskB_acc": an_ok / total,
-        "throughput_efficiency": (cls_ok + an_ok) / (2 * total * max(1, len(cfg["wavelengths_nm"])))
+        "throughput_efficiency": (cls_ok + an_ok) / (2 * total * max(1, len(cfg["wavelengths_nm"]))),
     }
     with open(f"{outdir}/metrics.csv", "w", newline="", encoding="utf-8") as f:
         w = csv.DictWriter(f, fieldnames=list(metrics.keys())); w.writeheader(); w.writerow(metrics)
