@@ -37,39 +37,85 @@ def _write_robustness_summary_plot(rows, out_path):
         f.write("\n".join(lines) + "\n")
 
 
-def _write_ablation(rows, out_csv, out_plot):
+def _write_ablation(rows, out_csv, out_pair_csv, out_plot, out_svg):
     def mean(v):
         return sum(v) / max(1, len(v))
 
-    by_mode = {}
-    by_coh = {}
-    by_bw = {}
-    by_shift = {}
+    by_mode, by_coh, by_bw, by_shift = {}, {}, {}, {}
     for r in rows:
         by_mode.setdefault(r["train_mode"], []).append(r["val_acc"])
         by_coh.setdefault(str(r["coherence"]), []).append(r["val_acc"])
         by_bw.setdefault(str(r["num_wavelengths"]), []).append(r["val_acc"])
         by_shift.setdefault(str(r["lateral_shift_px"]), []).append(r["val_acc"])
 
-    ablation_rows = []
+    agg_rows = []
     for k, vals in sorted(by_mode.items()):
-        ablation_rows.append({"axis": "train_mode", "setting": k, "mean_val_acc": round(mean(vals), 6)})
-    for k, vals in sorted(by_coh.items()):
-        ablation_rows.append({"axis": "coherence", "setting": k, "mean_val_acc": round(mean(vals), 6)})
-    for k, vals in sorted(by_bw.items()):
-        ablation_rows.append({"axis": "num_wavelengths", "setting": k, "mean_val_acc": round(mean(vals), 6)})
+        agg_rows.append({"axis": "train_mode", "setting": k, "mean_val_acc": round(mean(vals), 6)})
     for k, vals in sorted(by_shift.items()):
-        ablation_rows.append({"axis": "lateral_shift_px", "setting": k, "mean_val_acc": round(mean(vals), 6)})
+        agg_rows.append({"axis": "alignment", "setting": k, "mean_val_acc": round(mean(vals), 6)})
+    for k, vals in sorted(by_bw.items()):
+        agg_rows.append({"axis": "wavelength_count", "setting": k, "mean_val_acc": round(mean(vals), 6)})
+    for k, vals in sorted(by_coh.items()):
+        agg_rows.append({"axis": "coherence", "setting": k, "mean_val_acc": round(mean(vals), 6)})
 
     with open(out_csv, "w", newline="", encoding="utf-8") as f:
         w = csv.DictWriter(f, fieldnames=["axis", "setting", "mean_val_acc"])
-        w.writeheader(); w.writerows(ablation_rows)
+        w.writeheader(); w.writerows(agg_rows)
+
+    pair_rows = []
+
+    def add_pair(name, a_name, b_name, a_val, b_val):
+        pair_rows.append(
+            {
+                "comparison": name,
+                "setting_a": a_name,
+                "setting_b": b_name,
+                "mean_acc_a": round(a_val, 6),
+                "mean_acc_b": round(b_val, 6),
+                "delta_a_minus_b": round(a_val - b_val, 6),
+            }
+        )
+
+    add_pair("ideal_vs_robust", "robust", "ideal", mean(by_mode.get("robust", [0.0])), mean(by_mode.get("ideal", [0.0])))
+    add_pair("aligned_vs_misaligned", "shift=0.0", "shift=1.0", mean(by_shift.get("0.0", [0.0])), mean(by_shift.get("1.0", [0.0])))
+    add_pair("single_vs_multi_wavelength", "num_wavelengths=1", "num_wavelengths=3", mean(by_bw.get("1", [0.0])), mean(by_bw.get("3", [0.0])))
+    add_pair("high_vs_reduced_coherence", "coherence=1.0", "coherence=0.6", mean(by_coh.get("1.0", [0.0])), mean(by_coh.get("0.6", [0.0])))
+
+    with open(out_pair_csv, "w", newline="", encoding="utf-8") as f:
+        w = csv.DictWriter(f, fieldnames=["comparison", "setting_a", "setting_b", "mean_acc_a", "mean_acc_b", "delta_a_minus_b"])
+        w.writeheader(); w.writerows(pair_rows)
 
     with open(out_plot, "w", encoding="utf-8") as f:
         f.write("Topic1 aggregated comparison (text-plot fallback)\n")
-        for row in ablation_rows:
-            bars = "#" * max(1, int(row["mean_val_acc"] * 40))
-            f.write(f"{row['axis']}={row['setting']}: {row['mean_val_acc']:.4f} {bars}\n")
+        for row in pair_rows:
+            bars = "#" * max(1, int((row["mean_acc_a"] + row["mean_acc_b"]) * 25))
+            f.write(
+                f"{row['comparison']}: {row['mean_acc_a']:.4f} vs {row['mean_acc_b']:.4f} (Δ={row['delta_a_minus_b']:.4f}) {bars}\n"
+            )
+
+    width, height = 900, 260
+    bar_w = 120
+    x0 = 80
+    y_base = 210
+    scale = 140
+    labels = [r["comparison"] for r in pair_rows]
+    vals_a = [r["mean_acc_a"] for r in pair_rows]
+    vals_b = [r["mean_acc_b"] for r in pair_rows]
+    svg = [f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}">']
+    svg.append('<rect width="100%" height="100%" fill="white"/>')
+    svg.append('<text x="20" y="25" font-size="16" font-family="Arial">Topic1 Ablation Pairwise Comparison</text>')
+    for i, lbl in enumerate(labels):
+        x = x0 + i * 200
+        ha = vals_a[i] * scale
+        hb = vals_b[i] * scale
+        svg.append(f'<rect x="{x}" y="{y_base-ha}" width="{bar_w//2}" height="{ha}" fill="#4e79a7"/>')
+        svg.append(f'<rect x="{x + bar_w//2 + 8}" y="{y_base-hb}" width="{bar_w//2}" height="{hb}" fill="#f28e2b"/>')
+        svg.append(f'<text x="{x}" y="{y_base+20}" font-size="10" font-family="Arial">{lbl}</text>')
+    svg.append('<text x="760" y="40" font-size="11" font-family="Arial" fill="#4e79a7">A</text>')
+    svg.append('<text x="760" y="55" font-size="11" font-family="Arial" fill="#f28e2b">B</text>')
+    svg.append('</svg>')
+    with open(out_svg, "w", encoding="utf-8") as f:
+        f.write("\n".join(svg))
 
 
 def run_pilot(config_path):
@@ -116,7 +162,13 @@ def run_pilot(config_path):
         w.writeheader(); w.writerows(rows)
 
     _write_robustness_summary_plot(rows, f"{outdir}/robustness_trends.png")
-    _write_ablation(rows, f"{outdir}/ablation_summary.csv", f"{outdir}/aggregated_comparison.png")
+    _write_ablation(
+        rows,
+        f"{outdir}/ablation_summary.csv",
+        f"{outdir}/ablation_pairwise.csv",
+        f"{outdir}/aggregated_comparison.png",
+        f"{outdir}/paper_ablation.svg",
+    )
 
     best = sorted(rows, key=lambda r: r["val_acc"], reverse=True)[0]
     unique_acc = len({r["val_acc"] for r in rows})

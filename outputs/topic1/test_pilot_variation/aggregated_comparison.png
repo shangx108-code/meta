@@ -1,9 +1,5 @@
 Topic1 aggregated comparison (text-plot fallback)
-train_mode=ideal: 0.2500 ##########
-train_mode=robust: 0.2917 ###########
-coherence=0.5: 0.2708 ##########
-coherence=1.0: 0.2708 ##########
-num_wavelengths=1: 0.2708 ##########
-num_wavelengths=3: 0.2708 ##########
-lateral_shift_px=0.0: 0.4167 ################
-lateral_shift_px=1.0: 0.1250 #####
+ideal_vs_robust: 0.2917 vs 0.2500 (Δ=0.0417) #############
+aligned_vs_misaligned: 0.4167 vs 0.1250 (Δ=0.2917) #############
+single_vs_multi_wavelength: 0.2708 vs 0.2708 (Δ=0.0000) #############
+high_vs_reduced_coherence: 0.2708 vs 0.0000 (Δ=0.2708) ######

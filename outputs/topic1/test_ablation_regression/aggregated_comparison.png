@@ -1,0 +1,5 @@
+Topic1 aggregated comparison (text-plot fallback)
+ideal_vs_robust: 0.1458 vs 0.1667 (Δ=-0.0208) #######
+aligned_vs_misaligned: 0.2500 vs 0.0625 (Δ=0.1875) #######
+single_vs_multi_wavelength: 0.1458 vs 0.1667 (Δ=-0.0208) #######
+high_vs_reduced_coherence: 0.1562 vs 0.1562 (Δ=0.0000) #######

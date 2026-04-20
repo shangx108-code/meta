@@ -1,0 +1,17 @@
+run_id,train_mode,coherence,num_wavelengths,lateral_shift_px,val_acc,val_loss,backend_used,metrics_csv
+0,ideal,1.0,1,0.0,0.25,0.75,surrogate,outputs/topic1/test_ablation_regression/runs/run_0_ideal_coh1.0_bw1/metrics.csv
+1,ideal,1.0,1,1.0,0.083333,0.916667,surrogate,outputs/topic1/test_ablation_regression/runs/run_1_ideal_coh1.0_bw1/metrics.csv
+2,ideal,1.0,3,0.0,0.25,0.75,surrogate,outputs/topic1/test_ablation_regression/runs/run_2_ideal_coh1.0_bw3/metrics.csv
+3,ideal,1.0,3,1.0,0.083333,0.916667,surrogate,outputs/topic1/test_ablation_regression/runs/run_3_ideal_coh1.0_bw3/metrics.csv
+4,ideal,0.6,1,0.0,0.25,0.75,surrogate,outputs/topic1/test_ablation_regression/runs/run_4_ideal_coh0.6_bw1/metrics.csv
+5,ideal,0.6,1,1.0,0.083333,0.916667,surrogate,outputs/topic1/test_ablation_regression/runs/run_5_ideal_coh0.6_bw1/metrics.csv
+6,ideal,0.6,3,0.0,0.25,0.75,surrogate,outputs/topic1/test_ablation_regression/runs/run_6_ideal_coh0.6_bw3/metrics.csv
+7,ideal,0.6,3,1.0,0.083333,0.916667,surrogate,outputs/topic1/test_ablation_regression/runs/run_7_ideal_coh0.6_bw3/metrics.csv
+8,robust,1.0,1,0.0,0.25,0.75,surrogate,outputs/topic1/test_ablation_regression/runs/run_8_robust_coh1.0_bw1/metrics.csv
+9,robust,1.0,1,1.0,0.0,1.0,surrogate,outputs/topic1/test_ablation_regression/runs/run_9_robust_coh1.0_bw1/metrics.csv
+10,robust,1.0,3,0.0,0.25,0.75,surrogate,outputs/topic1/test_ablation_regression/runs/run_10_robust_coh1.0_bw3/metrics.csv
+11,robust,1.0,3,1.0,0.083333,0.916667,surrogate,outputs/topic1/test_ablation_regression/runs/run_11_robust_coh1.0_bw3/metrics.csv
+12,robust,0.6,1,0.0,0.25,0.75,surrogate,outputs/topic1/test_ablation_regression/runs/run_12_robust_coh0.6_bw1/metrics.csv
+13,robust,0.6,1,1.0,0.0,1.0,surrogate,outputs/topic1/test_ablation_regression/runs/run_13_robust_coh0.6_bw1/metrics.csv
+14,robust,0.6,3,0.0,0.25,0.75,surrogate,outputs/topic1/test_ablation_regression/runs/run_14_robust_coh0.6_bw3/metrics.csv
+15,robust,0.6,3,1.0,0.083333,0.916667,surrogate,outputs/topic1/test_ablation_regression/runs/run_15_robust_coh0.6_bw3/metrics.csv
