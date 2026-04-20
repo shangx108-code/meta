@@ -1,0 +1,1 @@
+# Intentionally minimal: standard-library-only fallback for restricted sandboxes.

@@ -1,0 +1,1 @@
+{"seed":3,"image_size":16,"batch_size":8,"epochs":1,"train_samples":16,"val_samples":8,"lr":0.01,"num_layers":1,"propagation_distance":0.02,"pixel_size":1.2e-5,"wavelengths_nm":[530],"coherence_mix":1.0,"noise_sigma":0.01,"robust_training":false,"phase_quantization_bits":4,"output_dir":"outputs/topic1/test_smoke"}

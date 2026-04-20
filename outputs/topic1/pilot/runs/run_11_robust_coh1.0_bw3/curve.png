@@ -1,0 +1,4 @@
+Fallback plot for val_acc
+
+epoch,val_loss,val_acc
+0,0.90625,0.09375

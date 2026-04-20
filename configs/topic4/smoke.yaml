@@ -1,0 +1,1 @@
+{"seed":17,"batch_size":32,"epochs":1,"train_samples":128,"val_samples":48,"lr":0.005,"image_size":32,"wavelengths_nm":[520,560],"crosstalk_weight":0.1,"output_dir":"outputs/topic4/smoke"}
