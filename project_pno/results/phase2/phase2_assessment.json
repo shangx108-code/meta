@@ -1,0 +1,14 @@
+{
+  "topic": "pno_phase2",
+  "rows": 24,
+  "unseen_condition_best": {
+    "poisson": "fourier",
+    "helmholtz": "local"
+  },
+  "gate_signals": [
+    "multi_pde",
+    "unseen_k",
+    "grid_transfer",
+    "branch_ablation"
+  ]
+}

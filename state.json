@@ -1,11 +1,11 @@
 {
-  "run_id": "run_2026-04-21_phase1_002",
-  "status": "phase1_complete",
+  "run_id": "run_2026-04-21_phase2_003",
+  "status": "phase2_gate_passed",
   "pipeline": "theory_simulation",
   "domain": "optics",
-  "stage": "cross_topic_phase1_simulation_and_review",
+  "stage": "iterative_execution_with_content_gate_stop",
   "resumable": true,
   "blocked_steps": [],
-  "recommended_next_action": "Execute phase2 with trustworthy baselines and non-synthetic ablations",
+  "recommended_next_action": "Start paper-pack generation (figures, latex sections, SI tables, reproducibility checklist).",
   "updated_at": "2026-04-21"
 }

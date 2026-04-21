@@ -1,0 +1,14 @@
+{
+  "topic": "meta_adapt_phase2",
+  "rows": 27,
+  "best_tradeoff": {
+    "severity": 0.2,
+    "fraction": 0.1,
+    "strategy": "global"
+  },
+  "gate_signals": [
+    "fraction_scan",
+    "severity_scan",
+    "strategy_pareto"
+  ]
+}
