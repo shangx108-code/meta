@@ -1,0 +1,10 @@
+{
+  "run_id": "run_2026-04-21_phase2_003",
+  "gates": {
+    "pno": true,
+    "prc": true,
+    "meta": true
+  },
+  "all_pass": true,
+  "interpretation": "Pass means simulation content checklist for LPR/AP-style draft is complete; not a claim of journal acceptance."
+}

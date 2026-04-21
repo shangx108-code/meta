@@ -1,0 +1,6 @@
+{
+  "topic": "prc_phase1",
+  "best_memory_gain": 0.8,
+  "best_task_gain": 0.8,
+  "claim_boundary": "This toy run provides executable capacity/task metrics; WDM and multi-task effects remain untested."
+}

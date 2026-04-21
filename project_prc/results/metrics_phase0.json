@@ -1,0 +1,7 @@
+{
+  "topic": "prc_phase0",
+  "best_memory_gain": 0.5,
+  "best_nonlinearity_gain": 0.9,
+  "tcf_proxy": 0.6431979871464628,
+  "note": "Synthetic phase-0 dynamic scan for pipeline validation only; not a scientific claim."
+}

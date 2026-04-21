@@ -1,0 +1,8 @@
+{
+  "topic": "pno_phase1",
+  "best_models": {
+    "poisson": "pure_local",
+    "helmholtz": "pure_local"
+  },
+  "claim_boundary": "Finite-difference toy confirms hybrid/local outperform Fourier-like proxy on this setup only."
+}

@@ -1,0 +1,47 @@
+{
+  "pno": {
+    "accept_prob": 0.92,
+    "criteria": {
+      "abstract": true,
+      "methods": true,
+      "results": true,
+      "claim_boundary": true,
+      "reproducibility": true,
+      "ablation": true,
+      "limitations": true,
+      "statistics": true,
+      "reviewer_refinement": false,
+      "design_law": true
+    }
+  },
+  "prc": {
+    "accept_prob": 0.92,
+    "criteria": {
+      "abstract": true,
+      "methods": true,
+      "results": true,
+      "claim_boundary": true,
+      "reproducibility": true,
+      "ablation": true,
+      "limitations": true,
+      "statistics": true,
+      "reviewer_refinement": true,
+      "design_law": false
+    }
+  },
+  "meta": {
+    "accept_prob": 0.87,
+    "criteria": {
+      "abstract": true,
+      "methods": true,
+      "results": true,
+      "claim_boundary": true,
+      "reproducibility": true,
+      "ablation": true,
+      "limitations": true,
+      "statistics": true,
+      "reviewer_refinement": false,
+      "design_law": false
+    }
+  }
+}

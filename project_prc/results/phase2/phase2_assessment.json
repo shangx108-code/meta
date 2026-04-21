@@ -1,0 +1,10 @@
+{
+  "topic": "prc_phase2",
+  "rows": 5,
+  "lowest_interference_crosstalk": 0.3,
+  "gate_signals": [
+    "capacity_curve",
+    "crosstalk_scan",
+    "parallel_interference"
+  ]
+}

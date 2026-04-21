@@ -1,0 +1,8 @@
+{
+  "topic": "meta_adapt_phase1",
+  "source_accuracy": 0.9925,
+  "shifted_accuracy": 0.985,
+  "best_accuracy_strategy": "electronic_comp",
+  "best_cost_effective_strategy": "electronic_comp",
+  "claim_boundary": "Local tuning/global retrain tradeoff is scenario-dependent in this toy setup."
+}
