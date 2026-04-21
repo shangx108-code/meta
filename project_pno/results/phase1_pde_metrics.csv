@@ -1,0 +1,7 @@
+pde,model,relative_l2
+poisson,pure_fourier,0.3943367499725888
+poisson,pure_local,0.24455816921998247
+poisson,hybrid,0.3419942934541429
+helmholtz,pure_fourier,1.735837500714893
+helmholtz,pure_local,0.7081973922115465
+helmholtz,hybrid,0.7191324627613991

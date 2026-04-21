@@ -1,0 +1,7 @@
+{
+  "topic": "pno_phase0",
+  "best_fourier_depth": 4,
+  "best_local_strength": 0.75,
+  "best_relative_l2": 0.0662377218267113,
+  "note": "Synthetic phase-0 scan for pipeline validation only; not a scientific claim."
+}

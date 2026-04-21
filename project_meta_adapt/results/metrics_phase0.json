@@ -1,0 +1,6 @@
+{
+  "topic": "meta_adapt_phase0",
+  "fraction_at_90pct_recovery": 0.8,
+  "best_pareto_index": 3,
+  "note": "Synthetic adaptation tradeoff scan for pipeline validation only; not a scientific claim."
+}

@@ -1,0 +1,5 @@
+strategy,shifted_accuracy,recovery_ratio,cost_proxy
+none,0.985,0.0,0.0
+electronic_comp,0.9675,-2.3333333333333086,0.2
+local_tuning,0.645,-45.33333333333295,0.4
+global_retrain,0.9375,-6.333333333333279,1.0
