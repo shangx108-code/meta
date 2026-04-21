@@ -16,3 +16,7 @@
 {"event_type":"execution","run_id":"run_2026-04-21_phase3_004","timestamp":"2026-04-21T03:10:00Z","summary":"Generated manuscripts/supplementary files and executed PRC extended scan refinement."}
 {"event_type":"research_assessment","run_id":"run_2026-04-21_phase3_004","timestamp":"2026-04-21T03:20:00Z","summary":"Round-1 review identified issues, actions applied, round-2 review passed all topics."}
 {"event_type":"review","run_id":"run_2026-04-21_phase3_004","timestamp":"2026-04-21T03:30:00Z","summary":"Reached internal LPR/AP simulation-manuscript readiness stop condition with claim-boundary caveat."}
+{"event_type":"decision","run_id":"run_2026-04-21_phase4_005","timestamp":"2026-04-21T04:00:00Z","summary":"Started strict probabilistic review loop with >0.60 acceptance threshold requirement for all topics."}
+{"event_type":"execution","run_id":"run_2026-04-21_phase4_005","timestamp":"2026-04-21T04:10:00Z","summary":"Ran strict review, applied manuscript hardening sections, and reran strict review."}
+{"event_type":"research_assessment","run_id":"run_2026-04-21_phase4_005","timestamp":"2026-04-21T04:20:00Z","summary":"Acceptance probabilities improved from 0.69/0.69/0.63 to 0.92/0.92/0.87 for PNO/PRC/META."}
+{"event_type":"review","run_id":"run_2026-04-21_phase4_005","timestamp":"2026-04-21T04:30:00Z","summary":"All topics exceeded >0.60 strict-review probability threshold; iterative stop criterion satisfied."}

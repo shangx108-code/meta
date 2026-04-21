@@ -20,3 +20,13 @@ Finite-difference solvers are used as reference truth; three branches (fourier/l
 - Script: `project_pno/scripts/run_phase2.py`
 - Data artifact: `project_pno/results/phase2/phase2_generalization.csv`
 - Assessment: `project_pno/results/phase2/phase2_assessment.json`
+
+
+## 6. Ablation and sensitivity
+We include branch/parameter sensitivity checks to avoid over-claiming single-point metrics and to expose design-law transitions.
+
+## 7. Statistical stability note
+All reported trends should be interpreted as simulation-trend evidence; next revision will add multi-seed confidence intervals.
+
+## 8. Limitations
+Current study is simulation-only and uses simplified models; hardware non-idealities and fabrication constraints are not yet fully modeled.

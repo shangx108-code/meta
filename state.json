@@ -1,11 +1,11 @@
 {
-  "run_id": "run_2026-04-21_phase3_004",
-  "status": "paper_pack_ready",
+  "run_id": "run_2026-04-21_phase4_005",
+  "status": "strict_review_probability_gate_passed",
   "pipeline": "theory_simulation",
   "domain": "optics",
-  "stage": "manuscript_and_si_with_internal_peer_review_pass",
+  "stage": "manuscript_refinement_and_probabilistic_acceptance_gate_pass",
   "resumable": true,
   "blocked_steps": [],
-  "recommended_next_action": "Export figures/tables into submission templates and run final reproducibility checklist.",
+  "recommended_next_action": "Prepare journal-formatted submission package and external pre-submission review.",
   "updated_at": "2026-04-21"
 }

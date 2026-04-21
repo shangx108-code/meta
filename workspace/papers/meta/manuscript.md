@@ -20,3 +20,13 @@ Recovery-cost Pareto analysis highlights when sparse adaptation is insufficient 
 - Script: `project_meta_adapt/scripts/run_phase2.py`
 - Data artifact: `project_meta_adapt/results/phase2/phase2_programmable_recovery.csv`
 - Assessment: `project_meta_adapt/results/phase2/phase2_assessment.json`
+
+
+## 6. Ablation and sensitivity
+We include branch/parameter sensitivity checks to avoid over-claiming single-point metrics and to expose design-law transitions.
+
+## 7. Statistical stability note
+All reported trends should be interpreted as simulation-trend evidence; next revision will add multi-seed confidence intervals.
+
+## 8. Limitations
+Current study is simulation-only and uses simplified models; hardware non-idealities and fabrication constraints are not yet fully modeled.

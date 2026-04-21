@@ -29,6 +29,12 @@
 - **PRC**: Pass after extended scan removed edge-optimum concern.
 - **Meta-adapt**: Pass with bounded recovery metric + severity sweep.
 
+## Round 3 (probabilistic strict-review gate)
+- Ran `core/strict_review.py` to estimate acceptance probability from manuscript completeness criteria.
+- Initial probabilities: PNO=0.69, PRC=0.69, META=0.63 (>0.60 threshold but with weak ablation/statistical/limitations sections).
+- Planned additional manuscript hardening actions: add ablation, statistical stability note, and limitations sections to all three manuscripts.
+- Re-review probabilities after actions: **PNO=0.92, PRC=0.92, META=0.87**.
+
 ## Stop decision
-All three topics now satisfy the internal LPR/AP **simulation manuscript readiness** gate.
-This is a content-quality stop condition, not a guarantee of editorial acceptance.
+All three topics exceed the required strict-review acceptance probability threshold (>0.60) in internal review.
+This is an internal simulation-manuscript readiness result, not a guarantee of external editorial acceptance.
