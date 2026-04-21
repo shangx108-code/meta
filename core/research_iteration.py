@@ -28,7 +28,7 @@ meta = load(ROOT / 'project_meta_adapt/results/phase2/phase2_assessment.json')
 gates = {
     'pno': set(pno.get('gate_signals', [])) >= {'multi_pde', 'unseen_k', 'grid_transfer', 'branch_ablation'},
     'prc': set(prc.get('gate_signals', [])) >= {'capacity_curve', 'crosstalk_scan', 'parallel_interference'},
-    'meta': set(meta.get('gate_signals', [])) >= {'fraction_scan', 'severity_scan', 'strategy_pareto'},
+    'meta': set(meta.get('gate_signals', [])) >= {'fraction_scan', 'severity_scan', 'strategy_pareto', 'repeatable_recovery_metric'},
 }
 all_pass = all(gates.values())
 

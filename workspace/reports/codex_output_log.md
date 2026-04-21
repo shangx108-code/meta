@@ -5,3 +5,4 @@
 - 2026-04-21: completed cross-topic phase-1 simulations and wrote quantitative assessment report.
 - 2026-04-21: reran phase-1 after calibration fix and updated run assessment with claim boundaries.
 - 2026-04-21: completed phase2 iterative loop and stopped after all topic gates passed.
+- 2026-04-21: completed manuscript+SI drafting, strict review, action execution, and re-review pass for three topics.
