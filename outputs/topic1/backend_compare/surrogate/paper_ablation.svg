@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="260">
+<rect width="100%" height="100%" fill="white"/>
+<text x="20" y="25" font-size="16" font-family="Arial">Topic1 Ablation Pairwise Comparison</text>
+<rect x="80" y="169.89574" width="60" height="40.104260000000004" fill="#4e79a7"/>
+<rect x="148" y="181.92706" width="60" height="28.07294" fill="#f28e2b"/>
+<text x="80" y="230" font-size="10" font-family="Arial">ideal_vs_robust</text>
+<rect x="280" y="161.14588" width="60" height="48.85412" fill="#4e79a7"/>
+<rect x="348" y="190.67706" width="60" height="19.32294" fill="#f28e2b"/>
+<text x="280" y="230" font-size="10" font-family="Arial">aligned_vs_misaligned</text>
+<rect x="480" y="174.08859999999999" width="60" height="35.9114" fill="#4e79a7"/>
+<rect x="548" y="177.73434" width="60" height="32.265660000000004" fill="#f28e2b"/>
+<text x="480" y="230" font-size="10" font-family="Arial">single_vs_multi_wavelength</text>
+<rect x="680" y="175.0" width="60" height="35.0" fill="#4e79a7"/>
+<rect x="748" y="176.82294000000002" width="60" height="33.17706" fill="#f28e2b"/>
+<text x="680" y="230" font-size="10" font-family="Arial">high_vs_reduced_coherence</text>
+<text x="760" y="40" font-size="11" font-family="Arial" fill="#4e79a7">A</text>
+<text x="760" y="55" font-size="11" font-family="Arial" fill="#f28e2b">B</text>
+</svg>

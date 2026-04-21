@@ -1,0 +1,6 @@
+Fallback plot for val_acc
+
+epoch,train_loss,val_loss,val_acc
+0,2.717863,0.895833,0.104167
+1,2.623582,0.885417,0.114583
+2,2.568504,0.84375,0.15625
