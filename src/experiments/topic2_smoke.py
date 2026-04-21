@@ -99,12 +99,26 @@ def run(config_path):
             bars = "#" * max(1, int(r["grad_stability"] * 25))
             f.write(f"{r['activation']},{r['setting_id']},{r['grad_stability']:.4f},{bars}\n")
 
+    summary_path = f"{outdir}/topic2_summary.md"
     write_markdown_report(
-        "docs/progress/topic2_smoke_summary.md",
+        summary_path,
         "Topic 2 Compact Co-design Study",
         {"best_nfom": rows[0]["nfom"], "best_activation": rows[0]["activation"], "best_grad_stability": rows[0]["grad_stability"]},
         notes="Higher NFOM favored moderate insertion loss, smoother gradient proxy, and non-collapsed dynamic range.",
     )
+    progress_doc = cfg.get("progress_doc")
+    if progress_doc:
+        write_markdown_report(
+            progress_doc,
+            "Topic 2 Compact Co-design Study",
+            {
+                "best_nfom": rows[0]["nfom"],
+                "best_activation": rows[0]["activation"],
+                "best_grad_stability": rows[0]["grad_stability"],
+                "summary_path": summary_path,
+            },
+            notes="Higher NFOM favored moderate insertion loss, smoother gradient proxy, and non-collapsed dynamic range.",
+        )
     print(csv_path)
 
 

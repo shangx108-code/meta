@@ -195,8 +195,9 @@ def run_pilot(config_path):
     best = sorted(rows, key=lambda r: r["val_acc"], reverse=True)[0]
     unique_acc = len({r["val_acc"] for r in rows})
     backend_set = sorted({r["backend_used"] for r in rows})
+    summary_path = f"{outdir}/pilot_summary.md"
     write_markdown_report(
-        "docs/progress/topic1_pilot_summary.md",
+        summary_path,
         "Topic 1 Pilot Summary",
         {
             "best_val_acc": best["val_acc"],
@@ -208,6 +209,22 @@ def run_pilot(config_path):
         },
         notes=f"Best run mode={best['train_mode']} coherence={best['coherence']} wavelengths={best['num_wavelengths']}.",
     )
+    progress_doc = cfg.get("progress_doc")
+    if progress_doc:
+        write_markdown_report(
+            progress_doc,
+            "Topic 1 Pilot Summary",
+            {
+                "best_val_acc": best["val_acc"],
+                "best_run_id": best["run_id"],
+                "num_runs": len(rows),
+                "unique_val_acc_values": unique_acc,
+                "backends_detected": ",".join(backend_set),
+                "phase_bits_probe_csv": phase_bits_csv,
+                "pilot_summary_path": summary_path,
+            },
+            notes=f"Best run mode={best['train_mode']} coherence={best['coherence']} wavelengths={best['num_wavelengths']}.",
+        )
     print(sweep_csv)
 
 

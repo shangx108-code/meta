@@ -1,1 +1,1 @@
-{"seed":13,"batch_size":32,"epochs":1,"train_samples":128,"val_samples":48,"lr":0.005,"image_size":32,"output_dir":"outputs/topic2/smoke"}
+{"seed":13,"batch_size":32,"epochs":1,"train_samples":128,"val_samples":48,"lr":0.005,"image_size":32,"output_dir":"outputs/topic2/smoke","progress_doc":"docs/progress/topic2_smoke_summary.md"}

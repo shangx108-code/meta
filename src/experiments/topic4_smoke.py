@@ -76,8 +76,9 @@ def run(config_path):
         for r in rows:
             f.write(f"w={r['crosstalk_weight']},throughput={r['throughput_efficiency']:.4f}\n")
 
+    summary_path = f"{outdir}/topic4_summary.md"
     write_markdown_report(
-        "docs/progress/topic4_smoke_summary.md",
+        summary_path,
         "Topic 4 Compact Follow-up",
         {
             "best_weight": best["crosstalk_weight"],
@@ -87,6 +88,20 @@ def run(config_path):
         },
         notes="At this scale, wavelength multiplexing shows a tradeoff curve rather than a fully optimized multitask gain.",
     )
+    progress_doc = cfg.get("progress_doc")
+    if progress_doc:
+        write_markdown_report(
+            progress_doc,
+            "Topic 4 Compact Follow-up",
+            {
+                "best_weight": best["crosstalk_weight"],
+                "best_taskA_acc": best["taskA_acc"],
+                "best_taskB_acc": best["taskB_acc"],
+                "best_throughput_efficiency": best["throughput_efficiency"],
+                "summary_path": summary_path,
+            },
+            notes="At this scale, wavelength multiplexing shows a tradeoff curve rather than a fully optimized multitask gain.",
+        )
     print(f"{outdir}/metrics.csv")
 
 

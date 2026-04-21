@@ -6,7 +6,6 @@
 - **unique_val_acc_values**: 5
 - **backends_detected**: surrogate
 - **phase_bits_probe_csv**: outputs/topic1/pilot/phase_bits_probe/phase_bits_sweep.csv
-- **pilot_summary_path**: outputs/topic1/pilot/pilot_summary.md
 
 ## Notes
 Best run mode=ideal coherence=1.0 wavelengths=1.
