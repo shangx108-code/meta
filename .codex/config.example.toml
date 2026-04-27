@@ -1,0 +1,11 @@
+# Example local Codex config.
+# Copy selected sections into ~/.codex/config.toml if desired.
+# Keep secrets out of this file and out of the repository.
+
+[features]
+# Enables more detailed AGENTS.md hierarchy guidance in supported Codex versions.
+child_agents_md = true
+
+# Optional: OpenAI developer docs MCP for current API/Codex documentation.
+# Add via CLI:
+# codex mcp add openaiDeveloperDocs --url https://developers.openai.com/mcp
