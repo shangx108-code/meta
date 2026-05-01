@@ -1,22 +1,26 @@
-# Field-free topological superconductivity in compensated-magnetic Josephson junctions — started 2026-04-30
+# Field-Free Topological Superconductivity in Compensated-Magnetic Josephson Junctions
 
-## Project objective
-Develop a Nature Physics-level theory manuscript on field-free topological superconductivity in compensated-magnetic/altermagnetic Josephson junctions, emphasizing phase-controlled topology and nonlocal Majorana diagnostics beyond local zero-bias peaks.
+This folder is the GitHub synchronization package for the current manuscript-facing
+project state as of 2026-05-02.
 
-## Central claim to test
-A compensated magnetic weak link with zero net magnetization can cooperate with superconducting phase bias to drive a topological transition and host Majorana end modes. The result must be distinguished from trivial ABS, YSR, and disorder-induced near-zero states using nonlocal transport, scattering-matrix topology, Josephson response, and robustness tests.
+## Included in this sync
 
-## Target journal
-Primary: Nature Physics. Backup: Nature Communications / Communications Physics / PRX Quantum / PRB depending on final novelty and evidence strength.
+- active manuscript draft: `submission_draft_main.tex`
+- verified citation supplement: `references_verified.bib`
+- original placeholder bibliography kept for traceability: `references.bib`
+- manuscript support packs and rewrite notes
+- archived manuscript-facing sync snapshot from `2026-05-02`
+- current project-state and review-memory files from `majorana-diagnostic-natphys`
 
-## Stopping criterion
-Continue hourly iterations until all five simulated reviewers assign acceptance probability >80% AND the evidence chain is complete:
-- model assumptions explicit
-- topology verified by at least two independent indicators
-- local and nonlocal conductance computed
-- trivial controls included: ABS, YSR, disorder/soft-gap states
-- figure plan and data provenance complete
-- manuscript and supplement compile without errors
+## This round's concrete update
 
-## Current status
-Initialized from user-provided project blueprint. No numerical results have been generated yet. Claims involving phase diagrams, Majorana wave functions, conductance maps, or disorder statistics remain proposed deliverables, not evidence.
+- upgraded `abs-false-positive-review` from an unresolved placeholder to the
+  published `Phys. Rev. B 97, 214502 (2018)` record in `references_verified.bib`
+- kept the old placeholder bibliography untouched
+- kept the manuscript pointed at the verified bibliography file for reliable compilation
+
+## Scope note
+
+This sync is intentionally limited to the manuscript-facing Majorana-diagnostic
+project package and its directly supporting memory files. Unrelated project spaces
+in `/workspace/memory` are excluded.
