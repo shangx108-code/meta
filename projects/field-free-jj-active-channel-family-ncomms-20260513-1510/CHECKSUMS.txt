@@ -1,0 +1,17 @@
+09377caa224c21735be9d67d491a1036746f4c5d479ba70ad4c5a54b1bd8e6fe  field-free-jj-active-channel-family-ncomms-20260513-1510-long-term-space-with-history-20260514T011858Z.zip
+
+734b4ea8bed69ef2ee3411fff67f6eae02920ce77a091d91023e7a7d6ed73e2c  codex-prompts/01-positive-control-benchmark-cn.md
+7d4699d839294cc69cb1454dc49cdb561d4531bdb7298796833942e7b0f26de9  codex-prompts/02-control-pool-sensitivity-cn.md
+8a2a9beb277d0c6786ed1c6c2ab9faa2684c434a62cc2445a5998956085dd9e9  codex-prompts/03-wide-link-exact-sensitivity-cn.md
+e925c200f20da9ecda6f91e2cfc3a56f0cde866f8a109dacc119ce8e275a9d5e  codex-prompts/04-full-ladder-active-family-search-cn.md
+bd531b17d123f8c1461e5667f94c136fe0f3818d1f8ff2233afd6b1bfc63b2ae  codex-prompts/05-w4-b0-3-independent-candidate-validation-cn.md
+d7da277934a329ab35b3b73b40eef534c09e587e3c861cef55e4c657049f89fa  codex-prompts/06-w4-b0-3-c2-c4-narrow-validation-campaign-cn.md
+1eaf1f2c6453b2b53d94be9d49741d7ee4dfbb9e97c00d7c53b57e3aef72fbce  manuscript/nc-safe-claim-package-v1.md
+e0407e6126405a4cf857a08cc5b9669bcf34e5467267fdef698fd7b5d3ea31c9  manuscript/nc-safe-paragraph-replacements-v1.md
+2b88f9773ae9442d6468f8f1de04964edaf79f5a13a379ce2b8af207e946224f  specs/control-pool-sensitivity-spec-v1.md
+71769c99fb30b36a767acf03a9a01d78d7097fe8d5ead81b3384d383abb0aef2  specs/full-ladder-active-family-search-spec-v1.md
+0e1f0941d8f61e7a6e72dcd49c10e3894e477a6eaf638858ff81ddf596cbb564  specs/positive-control-benchmark-spec-v1.md
+7677ae0b4273620b27fc873c1efdefeb8517da03e59b0a69a09677db37f10e2c  specs/w4-b0-3-c2-c4-narrow-validation-campaign-spec-v1.md
+87e5fa4db3ef86daf1e55a65e8cfdcbbbbbf792d317b6737c224d40c688765eb  specs/w4-b0-3-independent-candidate-validation-spec-v1.md
+bda64f54e94d7bf1e0516570a6b64684db23c78ff9495861ff5eb7392d5c4a5c  specs/wide-link-exact-sensitivity-spec-v1.md
+3a85138f0961f754db46c6ad4c38f4222cd7f4c9c54b9e6744634acd609d0998  规划-第一轮.md
